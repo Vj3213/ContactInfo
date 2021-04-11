@@ -30,6 +30,15 @@ const users = (state = initialState, action) => {
             }
         }
 
+        case 'DELETE_USER': {
+            const { userId } = action;
+            const filteredUser = state.data.filter(({ id }) => id != userId)
+            return {
+                ...state,
+                data: filteredUser
+            }
+        }
+
         default:
             return state;
     }

@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, Image, SafeAreaView, Text, TouchableOpacit
 import { connect } from 'react-redux';
 import api from '../../api';
 import styles from './styles'
+import Swipeout from 'react-native-swipeout';
 
 class Home extends Component {
 
@@ -34,22 +35,36 @@ class Home extends Component {
         )
     }
 
+    deleteUser = (userId) => {
+        this.props.dispatch({ type: 'DELETE_USER', userId })
+    }
+
     renderEachUser = ({ item }) => {
-        const { image, firstName, lastName, countryCode, phoneNumber } = item;
+        const { id, image, firstName, lastName, countryCode, phoneNumber } = item;
+        const swipeButtonConfig = [{
+            text: 'DELETE',
+            backgroundColor: '#BF0000',
+            onPress: () => this.deleteUser(id)
+        }];
         return (
-            <View style={styles.userContainer}>
-                <Image
-                    source={{ uri: image }}
-                    style={styles.photo}
-                />
-                <View style={styles.userDetailsContainer}>
-                    <Text>{`>`}</Text>
-                    <View style={styles.nameAndNumber}>
-                        <Text style={styles.name}>{`${firstName} ${lastName}`}</Text>
-                        <Text style={styles.number}>{`(${countryCode}) ${phoneNumber}`}</Text>
+            <Swipeout
+                right={swipeButtonConfig}
+                backgroundColor='transparent'
+            >
+                <View style={styles.userContainer}>
+                    <Image
+                        source={{ uri: image }}
+                        style={styles.photo}
+                    />
+                    <View style={styles.userDetailsContainer}>
+                        <Text>{`>`}</Text>
+                        <View style={styles.nameAndNumber}>
+                            <Text style={styles.name}>{`${firstName} ${lastName}`}</Text>
+                            <Text style={styles.number}>{`(${countryCode}) ${phoneNumber}`}</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
+            </Swipeout>
         )
     }
 
