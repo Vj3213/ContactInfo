@@ -39,10 +39,6 @@ class Home extends Component {
         this.props.dispatch({ type: 'DELETE_USER', userId })
     }
 
-    navigateToUserDetails = () => {
-        this.props.navigation.navigate('UserDetails')
-    }
-
     renderEachUser = ({ item }) => {
         const { id, image, firstName, lastName, countryCode, phoneNumber } = item;
         const swipeButtonConfig = [{
@@ -55,7 +51,7 @@ class Home extends Component {
                 right={swipeButtonConfig}
                 backgroundColor='transparent'
             >
-                <TouchableOpacity style={styles.userContainer} onPress={this.navigateToUserDetails}>
+                <TouchableOpacity style={styles.userContainer} onPress={() => this.props.navigation.navigate('UserDetails', { user: item })}>
                     <Image
                         source={{ uri: image }}
                         style={styles.photo}
