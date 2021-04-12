@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Image, SafeAreaView, Text, Linking, View } from 'react-native';
 import styles from './styles';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 
 export default class UserDetails extends Component {
     constructor(props) {
@@ -23,15 +26,19 @@ export default class UserDetails extends Component {
                 </View>
                 <View style={styles.detailsCont}>
                     <View style={styles.textAndIconCont}>
+                        <MaterialIcons name="call" size={24} />
                         <Text style={styles.detailsTextStyle}>{`(${countryCode}) ${phoneNumber}`}</Text>
                     </View>
                     <View style={styles.textAndIconCont}>
+                        <MaterialIcons name="email" size={24} />
                         <Text style={styles.detailsTextStyle}>{emailId}</Text>
                     </View>
                     <View style={styles.textAndIconCont}>
+                        <MaterialCommunityIcons name="bank-outline" size={24} />
                         <Text style={styles.detailsTextStyle}>{address}</Text>
                     </View>
                     <View style={styles.textAndIconCont}>
+                        <FontAwesome5Icons name="globe" size={24} />
                         <Text
                             style={styles.detailsTextStyle}
                             onPress={() => Linking.openURL(website)} //Linking only works on Actual devices and not on Simulator/emulator

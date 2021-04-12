@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 10, 
         justifyContent: 'space-between'
     },
+    arrowIcon: { 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
     photo: {
         width: 55,
         height: 55,

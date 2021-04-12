@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import api from '../../api';
 import styles from './styles'
 import Swipeout from 'react-native-swipeout';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Home extends Component {
 
@@ -57,7 +58,9 @@ class Home extends Component {
                         style={styles.photo}
                     />
                     <View style={styles.userDetailsContainer}>
-                        <Text>{`>`}</Text>
+                        <View style={styles.arrowIcon}>
+                            <Icon name='keyboard-arrow-right' size={30} />
+                        </View>
                         <View style={styles.nameAndNumber}>
                             <Text style={styles.name}>{`${firstName} ${lastName}`}</Text>
                             <Text style={styles.number}>{`(${countryCode}) ${phoneNumber}`}</Text>

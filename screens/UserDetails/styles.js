@@ -31,13 +31,15 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     textAndIconCont: {
+        flexDirection: 'row',
         padding: 16,
         alignItems: 'center'
     },
     detailsTextStyle: {
         fontSize: 16,
         opacity: 0.5,
-        fontWeight: '500'
+        fontWeight: '500',
+        marginLeft: 16
     }
 })
 
